@@ -1,0 +1,22 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:RGR.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        Width="450" Height="300"
+        x:Class="RGR.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="RGR">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+  <Grid ColumnDefinitions="150, 150, 150" RowDefinitions="270, 30">
+    <Button Content="Новый проект" Grid.Column="0" Grid.Row="1" Width="150" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="Create_Programm"/>
+    <Button Content="Загрузить проект" Grid.Column="1" Grid.Row="1" Width="150" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="OpenFile"/>
+    <Button Content="Выйти" Grid.Column="2" Grid.Row="1" Width="150" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="Exit_programm"/>
+  </Grid>
+
+</Window>

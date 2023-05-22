@@ -1,0 +1,128 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:models="clr-namespace:RGR.Models"
+        xmlns:views="clr-namespace:RGR.Views.Elements"
+        mc:Ignorable="d" d:DesignWidth="1400" d:DesignHeight="700"
+        Width="1400" Height="700"
+        MinWidth="1400" MinHeight="700"
+        x:Class="RGR.Views.Programm"
+        Title="Programm"
+        Icon="/Assets/fa_circ.ico">
+  <StackPanel>
+    <Border  BorderBrush="Black" BorderThickness="3" Width="{Binding $parent[Window].Width}">
+      <Menu HorizontalAlignment="Left" Width="60" Height="50">
+        <MenuItem Header="Меню">
+          <MenuItem Header="Создать"/>
+          <MenuItem Header="Открыть"/>
+          <MenuItem Header="Сохранить"/>
+          <MenuItem Click="Exit_programm" Header="Выйти"/>
+        </MenuItem>
+      </Menu>
+    </Border>
+    <Border BorderBrush="Black" BorderThickness="1" >
+      <WrapPanel Width="{Binding $parent[Window].Width}" Height="70">
+        <Button Name="button1" Click="ButtonClick" BorderThickness="1" BorderBrush="Black"  Height="70" Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+          <Grid RowDefinitions="35, 35">
+            <Image Grid.Row="0" Stretch="2" Source="/Assets/AND.png"/>
+            <TextBlock Grid.Row="1" Text="И" TextAlignment="Center"/>
+          </Grid>
+        </Button>
+        <Button Name="button2" Click="ButtonClick" BorderThickness="1" BorderBrush="Black" Height="70" Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+          <Grid RowDefinitions="35, 35">
+            <Image Grid.Row="0" Stretch="2" Source="/Assets/OR.png"/>
+            <TextBlock Grid.Row="1" Text="ИЛИ" TextAlignment="Center"/>
+          </Grid>
+        </Button>
+        <Button Name="button3" Click="ButtonClick" BorderThickness="1" BorderBrush="Black"  Height="70" Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+          <Grid RowDefinitions="35, 35">
+            <Image Grid.Row="0" Stretch="2" Source="/Assets/NOT.png"/>
+            <TextBlock Grid.Row="1" Text="НЕ" TextAlignment="Center"/>
+          </Grid>
+        </Button>
+        <Button Name="button4" Click="ButtonClick" BorderThickness="1" BorderBrush="Black" Height="70" Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+          <Grid RowDefinitions="35, 35">
+            <Image Grid.Row="0" Stretch="2" Source="/Assets/XOR.png"/>
+            <TextBlock Grid.Row="1" Text="ИСКЛЮЧАЮЩЕЕ ИЛИ" TextAlignment="Center"/>
+          </Grid>
+        </Button>
+        <Button Name="button5" Click="ButtonClick" BorderThickness="1" BorderBrush="Black" Content="ВХОД" Height="70" Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button Name="button6" Click="ButtonClick" BorderThickness="1" BorderBrush="Black" Content="ВЫХОД" Height="70" Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button Name="button7" Click="ButtonClick" BorderThickness="1" BorderBrush="Black" Height="70" Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+          <Grid RowDefinitions="35, 35">
+            <Image Grid.Row="0" Stretch="2" Source="/Assets/HALF_SUM.png"/>
+            <TextBlock Grid.Row="1" Text="ПОЛУСУММАТОР" TextAlignment="Center"/>
+          </Grid>
+        </Button>
+      </WrapPanel>
+    </Border>
+    <Border BorderBrush="Black" BorderThickness="1" Width="{Binding $parent[Window].Width}">
+      <Grid  ColumnDefinitions="1250, *"  RowDefinitions="1000" ShowGridLines="True">
+        <ItemsControl PointerPressed="PointerPressedOnCanvas" Items="{Binding All_Elements}"  Grid.Column="0" Grid.Row="0">
+          <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+              <Canvas Name="Holst" Background="White"/>
+            </ItemsPanelTemplate>
+          </ItemsControl.ItemsPanel>
+          <ItemsControl.DataTemplates>
+            <DataTemplate DataType="{x:Type models:Class_And}">
+              <views:Element_And>
+                <views:Element_And.RenderTransform>
+                  <TranslateTransform X="{Binding Main_Point.X}" Y="{Binding Main_Point.Y}"/>
+                </views:Element_And.RenderTransform>
+              </views:Element_And>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type models:Class_Enter}">
+              <views:Element_Enter>
+                <views:Element_Enter.RenderTransform>
+                  <TranslateTransform X="{Binding Main_Point.X}" Y="{Binding Main_Point.Y}"/>
+                </views:Element_Enter.RenderTransform>
+              </views:Element_Enter>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type models:Class_HalfSum}">
+              <views:Element_HalfSum>
+                <views:Element_HalfSum.RenderTransform>
+                  <TranslateTransform X="{Binding Main_Point.X}" Y="{Binding Main_Point.Y}"/>
+                </views:Element_HalfSum.RenderTransform>
+              </views:Element_HalfSum>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type models:Class_Not}">
+              <views:Element_Not>
+                <views:Element_Not.RenderTransform>
+                  <TranslateTransform X="{Binding Main_Point.X}" Y="{Binding Main_Point.Y}"/>
+                </views:Element_Not.RenderTransform>
+              </views:Element_Not>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type models:Class_Or}">
+              <views:Element_Or>
+                <views:Element_Or.RenderTransform>
+                  <TranslateTransform X="{Binding Main_Point.X}" Y="{Binding Main_Point.Y}"/>
+                </views:Element_Or.RenderTransform>
+              </views:Element_Or>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type models:Class_Out}">
+              <views:Element_Out>
+                <views:Element_Out.RenderTransform>
+                  <TranslateTransform X="{Binding Main_Point.X}" Y="{Binding Main_Point.Y}"/>
+                </views:Element_Out.RenderTransform>
+              </views:Element_Out>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type models:Class_XoR}">
+              <views:Element_XoR>
+                <views:Element_XoR.RenderTransform>
+                  <TranslateTransform X="{Binding Main_Point.X}" Y="{Binding Main_Point.Y}"/>
+                </views:Element_XoR.RenderTransform>
+              </views:Element_XoR>
+            </DataTemplate>
+            
+          </ItemsControl.DataTemplates>
+        </ItemsControl>
+        
+      </Grid>
+    </Border>
+  </StackPanel>
+  
+  
+  
+</Window>
