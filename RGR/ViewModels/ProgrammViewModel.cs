@@ -11,17 +11,19 @@ namespace RGR.ViewModels
 {
     public class ProgrammViewModel : ViewModelBase
     {
-        public int button_number;
-        public ObservableCollection<Full_Elements> all_elements;
+        private int button_number;
+        private Full_Elements selectedElement;
+        private ObservableCollection<Full_Elements> all_elements;
 
+        public ProgrammViewModel()
+        {
+            all_elements = new ObservableCollection<Full_Elements>();
+        }
+        
         public int Button_Number
         {
             get => button_number;
             set => this.RaiseAndSetIfChanged(ref button_number, value);
-        }
-        public ProgrammViewModel()
-        {
-            all_elements = new ObservableCollection<Full_Elements>();
         }
 
         public ObservableCollection<Full_Elements> All_Elements
@@ -30,6 +32,11 @@ namespace RGR.ViewModels
             set => this.RaiseAndSetIfChanged(ref all_elements, value);
         }
 
+        public Full_Elements SelectedElement
+        {
+            get => selectedElement;
+            set => this.RaiseAndSetIfChanged(ref selectedElement, value);
+        }
 
         public void Take_Button_Name(string name)
         {
@@ -111,7 +118,20 @@ namespace RGR.ViewModels
                 }
             }
         }
-
         
+        public void DeleteElement()
+        {
+            System.Diagnostics.Debug.WriteLine(123123);
+            ObservableCollection<Full_Elements> tempCollection = this.All_Elements;
+
+            for (int i = tempCollection.Count - 1; i >= 0; i--)
+            {
+                if (tempCollection[i] == this.SelectedElement)
+                {
+                    this.All_Elements.RemoveAt(i);
+                    break;
+                }
+            }
+        }
     }
 }

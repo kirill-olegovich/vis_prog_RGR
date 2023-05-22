@@ -7,6 +7,7 @@ using Avalonia.VisualTree;
 using System.Linq;
 using RGR.Models;
 using RGR.ViewModels;
+using System.Collections.ObjectModel;
 
 namespace RGR.Views
 {
@@ -14,6 +15,7 @@ namespace RGR.Views
     {
         public Point pointPointerPressed;
         public Point pointerPositionIntoElement;
+
         public Programm()
         {
             InitializeComponent();
@@ -39,7 +41,7 @@ namespace RGR.Views
             {
                 if(programm.Button_Number == 1) 
                 {
-                    programm.all_elements.Add(new Class_And { Main_Point = pointPointerPressed });
+                    programm.All_Elements.Add(new Class_And { Main_Point = pointPointerPressed });
 
                     //this.PointerMoved += PointerMoveDrawAnd;
                     //this.PointerReleased += PointerPressedReleasedDrawAnd;
@@ -47,32 +49,36 @@ namespace RGR.Views
                 }
                 else if (programm.Button_Number == 2)
                 {
-                    programm.all_elements.Add(new Class_Or { Main_Point = pointPointerPressed });
+                    programm.All_Elements.Add(new Class_Or { Main_Point = pointPointerPressed });
                 }
                 else if (programm.Button_Number == 3)
                 {
-                    programm.all_elements.Add(new Class_Not { Main_Point = pointPointerPressed });
+                    programm.All_Elements.Add(new Class_Not { Main_Point = pointPointerPressed });
                 }
                 else if (programm.Button_Number == 4)
                 {
-                    programm.all_elements.Add(new Class_XoR { Main_Point = pointPointerPressed });
+                    programm.All_Elements.Add(new Class_XoR { Main_Point = pointPointerPressed });
                 }
                 else if (programm.Button_Number == 5)
                 {
-                    programm.all_elements.Add(new Class_Enter { Main_Point = pointPointerPressed });
+                    programm.All_Elements.Add(new Class_Enter { Main_Point = pointPointerPressed });
                 }
                 else if (programm.Button_Number == 6)
                 {
-                    programm.all_elements.Add(new Class_Out { Main_Point = pointPointerPressed });
+                    programm.All_Elements.Add(new Class_Out { Main_Point = pointPointerPressed });
                 }
                 else if (programm.Button_Number == 7)
                 {
-                    programm.all_elements.Add(new Class_HalfSum { Main_Point = pointPointerPressed });
+                    programm.All_Elements.Add(new Class_HalfSum { Main_Point = pointPointerPressed });
                 }
-                else if(programm.button_number == 0)
+                else if(programm.Button_Number == 0)
                 {
-                    if(pointerPressedEventArgs.Source is Shape shape)
+                    if (pointerPressedEventArgs.Source is Shape shape)
                     {
+                        if(shape.DataContext is Full_Elements myElement)
+                        {
+                            programm.SelectedElement = myElement;
+                        }
                         pointerPositionIntoElement = pointerPressedEventArgs.GetPosition(shape);
                         this.PointerMoved += PointerMoveDragElement;
                         this.PointerReleased += PointerPressedReleasedDragElement;
@@ -124,6 +130,5 @@ namespace RGR.Views
         {
             this.Close();
         }
-
     }
 }
