@@ -9,6 +9,10 @@
         Icon="/Assets/avalonia-logo.ico"
         Title="RGR">
 
+    <Window.KeyBindings>
+      <KeyBinding Gesture="q" Command="{Binding DeleteElement}"/>
+    </Window.KeyBindings>
+
     <Design.DataContext>
         <vm:MainWindowViewModel/>
     </Design.DataContext>

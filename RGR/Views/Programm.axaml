@@ -10,6 +10,11 @@
         x:Class="RGR.Views.Programm"
         Title="Programm"
         Icon="/Assets/fa_circ.ico">
+
+  <Window.KeyBindings>
+    <KeyBinding Gesture="Delete" Command="{Binding DeleteElement}"/>
+  </Window.KeyBindings>
+
   <StackPanel>
     <Border  BorderBrush="Black" BorderThickness="3" Width="{Binding $parent[Window].Width}">
       <Menu HorizontalAlignment="Left" Width="60" Height="50">
