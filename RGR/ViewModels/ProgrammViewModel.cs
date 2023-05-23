@@ -12,18 +12,17 @@ namespace RGR.ViewModels
     public class ProgrammViewModel : ViewModelBase
     {
         private int button_number;
-        private Full_Elements selectedElement;
         private ObservableCollection<Full_Elements> all_elements;
+        private Full_Elements selected_element;
 
-        public ProgrammViewModel()
-        {
-            all_elements = new ObservableCollection<Full_Elements>();
-        }
-        
         public int Button_Number
         {
             get => button_number;
             set => this.RaiseAndSetIfChanged(ref button_number, value);
+        }
+        public ProgrammViewModel()
+        {
+            all_elements = new ObservableCollection<Full_Elements>();
         }
 
         public ObservableCollection<Full_Elements> All_Elements
@@ -32,21 +31,22 @@ namespace RGR.ViewModels
             set => this.RaiseAndSetIfChanged(ref all_elements, value);
         }
 
-        public Full_Elements SelectedElement
+        public Full_Elements Selected_Element
         {
-            get => selectedElement;
-            set => this.RaiseAndSetIfChanged(ref selectedElement, value);
+            get => selected_element;
+            set => this.RaiseAndSetIfChanged(ref selected_element, value);
         }
+
 
         public void Take_Button_Name(string name)
         {
-            if(name == "button1")
+            if (name == "button1")
             {
-                if(Button_Number == 1)
+                if (Button_Number == 1)
                 {
                     Button_Number = 0;
                 }
-                else if(Button_Number != 1)
+                else if (Button_Number != 1)
                 {
                     Button_Number = 1;
                 }
@@ -118,7 +118,7 @@ namespace RGR.ViewModels
                 }
             }
         }
-        
+
         public void DeleteElement()
         {
             System.Diagnostics.Debug.WriteLine(123123);
@@ -126,7 +126,7 @@ namespace RGR.ViewModels
 
             for (int i = tempCollection.Count - 1; i >= 0; i--)
             {
-                if (tempCollection[i] == this.SelectedElement)
+                if (tempCollection[i] == this.Selected_Element)
                 {
                     this.All_Elements.RemoveAt(i);
                     break;
