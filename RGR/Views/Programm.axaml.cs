@@ -44,10 +44,6 @@ namespace RGR.Views
                 if (programm.Button_Number == 1)
                 {
                     programm.All_Elements.Add(new Class_And { Main_Point = pointPointerPressed });
-
-                    //this.PointerMoved += PointerMoveDrawAnd;
-                    //this.PointerReleased += PointerPressedReleasedDrawAnd;
-                    //programm.Button_Number = 1;
                 }
                 else if (programm.Button_Number == 2)
                 {
@@ -63,7 +59,7 @@ namespace RGR.Views
                 }
                 else if (programm.Button_Number == 5)
                 {
-                    programm.All_Elements.Add(new Class_Enter { Main_Point = pointPointerPressed });
+                    programm.All_Elements.Add(new Class_In { Main_Point = pointPointerPressed });
                 }
                 else if (programm.Button_Number == 6)
                 {
@@ -118,16 +114,6 @@ namespace RGR.Views
             }
         }
 
-        //public void PointerMoveDrawAnd(object? sender, PointerEventArgs pointerEventArgs)
-        //{
-        //    if(this.DataContext is ProgrammViewModel programm)
-        //    {
-        //        Class_And editAnd = new Class_And { Main_Point = pointPointerPressed };
-        //        programm.all_elements.Add((Class_And)editAnd);
-        //        Point currentPointPosition = pointerEventArgs.GetPosition(this.GetVisualDescendants().OfType<Canvas>().FirstOrDefault());
-        //    }
-        //}
-
         public void PointerMoveDragElement(object? sender, PointerEventArgs pointerEventArgs)
         {
             if (pointerEventArgs.Source is Shape shape)
@@ -149,13 +135,6 @@ namespace RGR.Views
             this.PointerMoved -= PointerMoveDragElement;
             this.PointerReleased -= PointerPressedReleasedDragElement;
         }
-
-
-        //public void PointerPressedReleasedDrawAnd(object? sender, PointerReleasedEventArgs poiterEventArgs)
-        //{
-        //    this.PointerMoved -= PointerMoveDrawAnd;
-        //    this.PointerReleased -= PointerPressedReleasedDrawAnd;
-        //}
 
         public void Exit_programm(object sender, RoutedEventArgs eventArgs)
         {

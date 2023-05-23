@@ -121,7 +121,6 @@ namespace RGR.ViewModels
 
         public void DeleteElement()
         {
-            System.Diagnostics.Debug.WriteLine(123123);
             ObservableCollection<Full_Elements> tempCollection = this.All_Elements;
 
             for (int i = tempCollection.Count - 1; i >= 0; i--)
