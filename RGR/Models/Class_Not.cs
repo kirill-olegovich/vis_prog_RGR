@@ -8,14 +8,6 @@ namespace RGR.Models
 {
     public class Class_Not : Full_Elements
     {
-        public int input1;
-
-        public int Input1
-        {
-            get => input1;
-            set => SetAndRaise(ref input1, value);
-        }
-
         public void Value_Not()
         {
             if (Input1 == 0)

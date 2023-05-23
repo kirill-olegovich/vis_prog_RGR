@@ -65,11 +65,13 @@
     <Border BorderBrush="Black" BorderThickness="1" Width="{Binding $parent[Window].Width}">
       <Grid  ColumnDefinitions="1250, *"  RowDefinitions="1000" ShowGridLines="True">
         <ItemsControl PointerPressed="PointerPressedOnCanvas" Items="{Binding All_Elements}"  Grid.Column="0" Grid.Row="0">
+
           <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
               <Canvas Name="Holst" Background="White"/>
             </ItemsPanelTemplate>
           </ItemsControl.ItemsPanel>
+
           <ItemsControl.DataTemplates>
             <DataTemplate DataType="{x:Type models:Class_And}">
               <views:Element_And>
@@ -78,13 +80,15 @@
                 </views:Element_And.RenderTransform>
               </views:Element_And>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type models:Class_Enter}">
-              <views:Element_Enter>
-                <views:Element_Enter.RenderTransform>
+
+            <DataTemplate DataType="{x:Type models:Class_In}">
+              <views:Element_In Power="{Binding Input1}">
+                <views:Element_In.RenderTransform>
                   <TranslateTransform X="{Binding Main_Point.X}" Y="{Binding Main_Point.Y}"/>
-                </views:Element_Enter.RenderTransform>
-              </views:Element_Enter>
+                </views:Element_In.RenderTransform>
+              </views:Element_In>
             </DataTemplate>
+
             <DataTemplate DataType="{x:Type models:Class_HalfSum}">
               <views:Element_HalfSum>
                 <views:Element_HalfSum.RenderTransform>
@@ -92,6 +96,7 @@
                 </views:Element_HalfSum.RenderTransform>
               </views:Element_HalfSum>
             </DataTemplate>
+
             <DataTemplate DataType="{x:Type models:Class_Not}">
               <views:Element_Not>
                 <views:Element_Not.RenderTransform>
@@ -99,6 +104,7 @@
                 </views:Element_Not.RenderTransform>
               </views:Element_Not>
             </DataTemplate>
+
             <DataTemplate DataType="{x:Type models:Class_Or}">
               <views:Element_Or>
                 <views:Element_Or.RenderTransform>
@@ -106,13 +112,15 @@
                 </views:Element_Or.RenderTransform>
               </views:Element_Or>
             </DataTemplate>
+
             <DataTemplate DataType="{x:Type models:Class_Out}">
-              <views:Element_Out>
+              <views:Element_Out Power="{Binding Input1}">
                 <views:Element_Out.RenderTransform>
                   <TranslateTransform X="{Binding Main_Point.X}" Y="{Binding Main_Point.Y}"/>
                 </views:Element_Out.RenderTransform>
               </views:Element_Out>
             </DataTemplate>
+
             <DataTemplate DataType="{x:Type models:Class_XoR}">
               <views:Element_XoR>
                 <views:Element_XoR.RenderTransform>

@@ -4,10 +4,10 @@
         xmlns:vm="clr-namespace:RGR.ViewModels"
         xmlns:controls="using:RGR.Views.Elements">
   <Design.PreviewWith>
-    <controls:Element_Out />
+    <controls:Element_In />
   </Design.PreviewWith>
 
-  <Style Selector="controls|Element_Out">
+  <Style Selector="controls|Element_In">
     <!-- Set Defaults -->
     <Setter Property="Template">
       <ControlTemplate>
@@ -15,7 +15,7 @@
           <Rectangle Width="{Binding $parent[Canvas].Width}" Height="{Binding $parent[Canvas].Height}" Fill="Transparent"/>
           <Border  BorderBrush="Black" BorderThickness="2" Width="{Binding $parent[Canvas].Width}" Height="{Binding $parent[Canvas].Height}" ClipToBounds="True">
             <StackPanel Height="{Binding $parent[Border].Height}">
-              <TextBlock HorizontalAlignment="Center" FontSize="20" Text="OUTPUT"></TextBlock>
+              <TextBlock HorizontalAlignment="Center" FontSize="20" Text="INPUT"></TextBlock>
               <TextBlock HorizontalAlignment="Center" FontSize="20" Text=""></TextBlock>
               <TextBlock HorizontalAlignment="Center" FontSize="20" Text="{TemplateBinding Power}"></TextBlock>
             </StackPanel>

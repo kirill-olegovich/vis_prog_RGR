@@ -9,7 +9,7 @@
     <Application.Styles>
         <FluentTheme Mode="Light"/>
       <StyleInclude Source="/Views/Elements/Element_And.axaml"/>
-      <StyleInclude Source="/Views/Elements/Element_Enter.axaml"/>
+      <StyleInclude Source="/Views/Elements/Element_In.axaml"/>
       <StyleInclude Source="/Views/Elements/Element_HalfSum.axaml"/>
       <StyleInclude Source="/Views/Elements/Element_Not.axaml"/>
       <StyleInclude Source="/Views/Elements/Element_Or.axaml"/>

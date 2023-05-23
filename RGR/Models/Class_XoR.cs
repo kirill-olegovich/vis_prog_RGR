@@ -8,19 +8,6 @@ namespace RGR.Models
 {
     public class Class_XoR : Full_Elements
     {
-        public int input1, input2;
-
-        public int Input1
-        {
-            get => input1;
-            set => SetAndRaise(ref input1, value);
-        }
-        public int Input2
-        {
-            get => input2;
-            set => SetAndRaise(ref input2, value);
-        }
-
         public void Value_And()
         {
             if (Input1 == 0 && Input2 == 0)
