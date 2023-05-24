@@ -127,6 +127,10 @@ namespace RGR.ViewModels
             {   
                 if (tempCollection[i] is Class_Line tempLine)
                 {
+                    if (tempLine == this.Selected_Element)
+                    {
+                        this.All_Elements.RemoveAt(i);
+                    }
                     if (tempLine.FirstElement != null)
                     {
                         if (tempLine.FirstElement == this.Selected_Element)

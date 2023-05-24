@@ -64,7 +64,7 @@
     </Border>
     <Border BorderBrush="Black" BorderThickness="1" Width="{Binding $parent[Window].Width}">
       <Grid  ColumnDefinitions="1250, *"  RowDefinitions="1000" ShowGridLines="True">
-        <ItemsControl PointerPressed="PointerPressedOnCanvas" Items="{Binding All_Elements}"  Grid.Column="0" Grid.Row="0">
+        <ItemsControl PointerPressed="PointerPressedOnCanvas" DoubleTapped="DoubleTapOnCanvas" Items="{Binding All_Elements}"  Grid.Column="0" Grid.Row="0">
 
           <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
@@ -82,7 +82,7 @@
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type models:Class_In}">
-              <views:Element_In Power="{Binding Input1}">
+              <views:Element_In Power="{Binding Output1}">
                 <views:Element_In.RenderTransform>
                   <TranslateTransform X="{Binding Main_Point.X}" Y="{Binding Main_Point.Y}"/>
                 </views:Element_In.RenderTransform>
@@ -130,7 +130,7 @@
             </DataTemplate>
             
             <DataTemplate DataType="{x:Type models:Class_Line}">
-              <Line StartPoint="{Binding StartPoint}" EndPoint="{Binding EndPoint}" Stroke="Black" StrokeThickness="1"/>
+              <Line StartPoint="{Binding StartPoint}" EndPoint="{Binding EndPoint}" Stroke="Black" StrokeThickness="2"/>
             </DataTemplate>
             
           </ItemsControl.DataTemplates>
