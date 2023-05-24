@@ -39,7 +39,7 @@ namespace RGR.Views
         {
             pointPointerPressed = pointerPressedEventArgs.GetPosition(this.GetVisualDescendants().OfType<Canvas>().FirstOrDefault());
 
-            if (this.DataContext is ProgrammViewModel programm)
+            if (DataContext is ProgrammViewModel programm)
             {
                 if (programm.Button_Number == 1)
                 {
@@ -102,6 +102,13 @@ namespace RGR.Views
                         this.PointerMoved += PointerMoveDragElement;
                         this.PointerReleased += PointerPressedReleasedDragElement;
                     }
+                    else if (pointerPressedEventArgs.Source is Line line)
+                    {
+                        if (line.DataContext is Full_Elements myElement)
+                        {
+                            programm.Selected_Element = myElement;
+                        }
+                    }
                     else if (pointerPressedEventArgs.Source is Ellipse ellipse)
                     {
                         startPoint = pointerPressedEventArgs.GetPosition(this.GetVisualDescendants().OfType<Canvas>().FirstOrDefault());
@@ -109,6 +116,24 @@ namespace RGR.Views
                         programm.All_Elements.Add(new Class_Line { StartPoint = startPoint, EndPoint = startPoint, FirstElement = ellipse.DataContext as Full_Elements });
                         this.PointerMoved += PointerMoveDrawLine;
                         this.PointerReleased += PointerPressedReleasedDrawLine;
+                    }
+                }
+            }
+        }
+
+        private void DoubleTapOnCanvas(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is ProgrammViewModel viewModel)
+            {
+                var src = e.Source;
+                if (src == null) return;
+
+                if (e.Source is Rectangle rect)
+                {
+                    if (rect.DataContext is Class_In rectIn)
+                    {
+                        rectIn.Output1 ^= 1;
+                        // System.Diagnostics.Debug.WriteLine(rectIn.Output1);
                     }
                 }
             }
@@ -143,7 +168,7 @@ namespace RGR.Views
 
         private void PointerMoveDrawLine(object? sender, PointerEventArgs pointerEventArgs)
         {
-            if (this.DataContext is ProgrammViewModel viewModel)
+            if (DataContext is ProgrammViewModel viewModel)
             {
                 Debug.WriteLine(sender);
                 Class_Line connector = viewModel.All_Elements[viewModel.All_Elements.Count - 1] as Class_Line;
@@ -165,7 +190,7 @@ namespace RGR.Views
             var coords = pointerReleasedEventArgs.GetPosition(canvas);
 
             var element = canvas.InputHitTest(coords);
-            ProgrammViewModel viewModel = this.DataContext as ProgrammViewModel;
+            ProgrammViewModel viewModel = DataContext as ProgrammViewModel;
 
             if (element is Ellipse ellipse)
             {
