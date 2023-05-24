@@ -7,10 +7,13 @@
     </Application.DataTemplates>
 
     <Application.Styles>
-        <FluentTheme Mode="Light"/>
+      <FluentTheme Mode="Light"/>
       <StyleInclude Source="/Views/Elements/Element_And.axaml"/>
       <StyleInclude Source="/Views/Elements/Element_In.axaml"/>
       <StyleInclude Source="/Views/Elements/Element_HalfSum.axaml"/>
+      <StyleInclude Source="/Views/Elements/Element_Sum.axaml"/>
+      <StyleInclude Source="/Views/Elements/Element_DC.axaml"/>
+      <StyleInclude Source="/Views/Elements/Element_CD.axaml"/>
       <StyleInclude Source="/Views/Elements/Element_Not.axaml"/>
       <StyleInclude Source="/Views/Elements/Element_Or.axaml"/>
       <StyleInclude Source="/Views/Elements/Element_Out.axaml"/>

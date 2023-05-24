@@ -82,20 +82,44 @@
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type models:Class_In}">
-              <views:Element_In Power="{Binding Output1}">
+              <views:Element_In Power="{Binding OUTPUT}">
                 <views:Element_In.RenderTransform>
                   <TranslateTransform X="{Binding Main_Point.X}" Y="{Binding Main_Point.Y}"/>
                 </views:Element_In.RenderTransform>
               </views:Element_In>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type models:Class_HalfSum}">
+<!--             <DataTemplate DataType="{x:Type models:Class_HalfSum}">
               <views:Element_HalfSum>
                 <views:Element_HalfSum.RenderTransform>
                   <TranslateTransform X="{Binding Main_Point.X}" Y="{Binding Main_Point.Y}"/>
                 </views:Element_HalfSum.RenderTransform>
               </views:Element_HalfSum>
+            </DataTemplate> -->
+            
+            <DataTemplate DataType="{x:Type models:Class_Sum}">
+              <views:Element_Sum>
+                <views:Element_Sum.RenderTransform>
+                  <TranslateTransform X="{Binding Main_Point.X}" Y="{Binding Main_Point.Y}"/>
+                </views:Element_Sum.RenderTransform>
+              </views:Element_Sum>
             </DataTemplate>
+
+<!--             <DataTemplate DataType="{x:Type models:Class_CD}">
+              <views:Element_DC>
+                <views:Element_DC.RenderTransform>
+                  <TranslateTransform X="{Binding Main_Point.X}" Y="{Binding Main_Point.Y}"/>
+                </views:Element_DC.RenderTransform>
+              </views:Element_DC>
+            </DataTemplate> -->
+
+<!--             <DataTemplate DataType="{x:Type models:Class_CD}">
+              <views:Element_CD>
+                <views:Element_CD.RenderTransform>
+                  <TranslateTransform X="{Binding Main_Point.X}" Y="{Binding Main_Point.Y}"/>
+                </views:Element_CD.RenderTransform>
+              </views:Element_CD>
+            </DataTemplate> -->
 
             <DataTemplate DataType="{x:Type models:Class_Not}">
               <views:Element_Not>
@@ -114,7 +138,7 @@
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type models:Class_Out}">
-              <views:Element_Out Power="{Binding Input1}">
+              <views:Element_Out Power="{Binding OUTPUT}">
                 <views:Element_Out.RenderTransform>
                   <TranslateTransform X="{Binding Main_Point.X}" Y="{Binding Main_Point.Y}"/>
                 </views:Element_Out.RenderTransform>
@@ -130,7 +154,7 @@
             </DataTemplate>
             
             <DataTemplate DataType="{x:Type models:Class_Line}">
-              <Line StartPoint="{Binding StartPoint}" EndPoint="{Binding EndPoint}" Stroke="Black" StrokeThickness="2"/>
+              <Line StartPoint="{Binding StartPoint}" EndPoint="{Binding EndPoint}" Stroke="Black" StrokeThickness="5"/>
             </DataTemplate>
             
           </ItemsControl.DataTemplates>

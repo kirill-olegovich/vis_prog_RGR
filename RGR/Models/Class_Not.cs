@@ -8,16 +8,36 @@ namespace RGR.Models
 {
     public class Class_Not : Full_Elements
     {
-        public void Value_Not()
+        public override void Calculate()
         {
-            if (Input1 == 0)
+            if (InElements[0] != null)
             {
-                Output1 = 1;
+                Inputs[0] = InElements[0].Element.Outputs[InElements[0].Index];
+                Power = InElements[0].Element.Power;
+
+                if (Power != 0)
+                {
+                    if (Inputs[0] == 0)
+                    {
+                        Outputs[0] = 1;
+                    }
+                    else if (Inputs[0] == 1)
+                    {
+                        Outputs[0] = 0;
+                    }
+                }
+                else
+                {
+                    Outputs[0] = 0;
+                }
             }
-            else if (Input1 == 1)
+            else
             {
-                Output1 = 0;
+                Outputs[0] = 0;
+                Power = 0;
             }
+            
+            System.Diagnostics.Debug.WriteLine("NOT FINAL " + Outputs[0].ToString());
         }
     }
 }
