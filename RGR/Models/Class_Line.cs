@@ -13,6 +13,7 @@ namespace RGR.Models
         private Point endPoint;
         private Full_Elements firstElement;
         private Full_Elements secondElement;
+        
         public Point StartPoint
         {
             get => startPoint;

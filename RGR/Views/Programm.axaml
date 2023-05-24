@@ -128,6 +128,7 @@
                 </views:Element_XoR.RenderTransform>
               </views:Element_XoR>
             </DataTemplate>
+            
             <DataTemplate DataType="{x:Type models:Class_Line}">
               <Line StartPoint="{Binding StartPoint}" EndPoint="{Binding EndPoint}" Stroke="Black" StrokeThickness="1"/>
             </DataTemplate>

@@ -124,11 +124,30 @@ namespace RGR.ViewModels
             ObservableCollection<Full_Elements> tempCollection = this.All_Elements;
 
             for (int i = tempCollection.Count - 1; i >= 0; i--)
-            {
-                if (tempCollection[i] == this.Selected_Element)
+            {   
+                if (tempCollection[i] is Class_Line tempLine)
                 {
-                    this.All_Elements.RemoveAt(i);
-                    break;
+                    if (tempLine.FirstElement != null)
+                    {
+                        if (tempLine.FirstElement == this.Selected_Element)
+                        {
+                            this.All_Elements.RemoveAt(i);
+                        }
+                    }
+                    if (tempLine.SecondElement != null)
+                    {
+                        if (tempLine.SecondElement == this.Selected_Element)
+                        {
+                            this.All_Elements.RemoveAt(i);
+                        }
+                    }
+                }
+                else if (tempCollection[i] is Full_Elements tempElement)
+                {
+                    if (tempElement == this.Selected_Element)
+                    {
+                        this.All_Elements.RemoveAt(i);
+                    }
                 }
             }
         }

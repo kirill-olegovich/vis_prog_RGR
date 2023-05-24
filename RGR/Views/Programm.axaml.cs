@@ -106,7 +106,7 @@ namespace RGR.Views
                     {
                         startPoint = pointerPressedEventArgs.GetPosition(this.GetVisualDescendants().OfType<Canvas>().FirstOrDefault());
                         //endPoint = pointerPressedEventArgs.GetPosition(ellipse);
-                        programm.All_Elements.Add(new Class_Line { StartPoint = startPoint, FirstElement = ellipse.DataContext as Full_Elements });
+                        programm.All_Elements.Add(new Class_Line { StartPoint = startPoint, EndPoint = startPoint, FirstElement = ellipse.DataContext as Full_Elements });
                         this.PointerMoved += PointerMoveDrawLine;
                         this.PointerReleased += PointerPressedReleasedDrawLine;
                     }
@@ -173,8 +173,11 @@ namespace RGR.Views
                 if (ellipse.DataContext is Full_Elements full_element)
                 {
                     Class_Line connector = viewModel.All_Elements[viewModel.All_Elements.Count - 1] as Class_Line;
-                    connector.SecondElement = full_element;
-                    return;
+                    if (connector.FirstElement != full_element)
+                    {
+                        connector.SecondElement = full_element;
+                        return;
+                    }
                 }
             }
 
