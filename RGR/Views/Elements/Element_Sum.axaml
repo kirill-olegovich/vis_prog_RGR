@@ -1,11 +1,11 @@
-﻿<Styles xmlns="https://github.com/avaloniaui"
+<Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="using:RGR.Views.Elements">
   <Design.PreviewWith>
-    <controls:Element_HalfSum />
+    <controls:Element_Sum />
   </Design.PreviewWith>
 
-  <Style Selector="controls|Element_HalfSum">
+  <Style Selector="controls|Element_Sum">
     <!-- Set Defaults -->
     <Setter Property="Template">
       <ControlTemplate>
@@ -15,7 +15,8 @@
           <TextBlock Text="P"  Canvas.Left="90" Canvas.Top="3" FontSize="20"/>
           <TextBlock Text="S"  Canvas.Left="90" Canvas.Top="43" FontSize="20"/>
           <Ellipse Name="in0" Fill="Gray" Stroke="Black" StrokeThickness="1" Height="10" Width="10" Canvas.Top="10" Canvas.Left="0"/>
-          <Ellipse Name="in1" Fill="Gray" Stroke="Black" StrokeThickness="1" Height="10" Width="10" Canvas.Top="50" Canvas.Left="0"/>
+          <Ellipse Name="in1" Fill="Gray" Stroke="Black" StrokeThickness="1" Height="10" Width="10" Canvas.Top="30" Canvas.Left="0"/>
+          <Ellipse Name="in2" Fill="Gray" Stroke="Black" StrokeThickness="1" Height="10" Width="10" Canvas.Top="50" Canvas.Left="0"/>
           <Ellipse Name="out0" Fill="Gray" Stroke="Black" StrokeThickness="1" Height="10" Width="10" Canvas.Top="10" Canvas.Left="110"/>
           <Ellipse Name="out1" Fill="Gray" Stroke="Black" StrokeThickness="1" Height="10" Width="10" Canvas.Top="50" Canvas.Left="110"/>
           <Rectangle Fill="Transparent" Canvas.Left="10" Width="100" Height="70"/>

@@ -10,10 +10,10 @@
     <Setter Property="Template">
       <ControlTemplate>
         <Canvas Width="36" Height="31" Background="Transparent">
-          <Ellipse Name="in1" Fill="Gray" Height="5" Width="5" Canvas.Top="2"/>
-          <Ellipse Name="in2" Fill="Gray" Height="5" Width="5" Canvas.Top="22"/>
+          <Ellipse Name="in0" Fill="Gray" Height="5" Width="5" Canvas.Top="2"/>
+          <Ellipse Name="in1" Fill="Gray" Height="5" Width="5" Canvas.Top="22"/>
           <Path Fill="LightGray" Data="m 0,0 v 30,0 c 30,0 40,-28 0,-30" StrokeThickness="1" Stroke="Black" Canvas.Left="5"/>
-          <Ellipse Name="out" Fill="Gray" Height="5" Width="5" Canvas.Top="12" Canvas.Left="31.4"/>
+          <Ellipse Name="out0" Fill="Gray" Height="5" Width="5" Canvas.Top="12" Canvas.Left="31.4"/>
         </Canvas>
       </ControlTemplate>
     </Setter>

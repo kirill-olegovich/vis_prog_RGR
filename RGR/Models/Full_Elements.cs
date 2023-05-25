@@ -4,10 +4,17 @@ using System;
 
 namespace RGR.Models
 {
-    public abstract class Full_Elements : AbstractNotifyPropertyChanged
+    public class Full_Elements : AbstractNotifyPropertyChanged
     {
         protected Avalonia.Point main_point;
-        private int input1, input2, output1, output2;
+        private int[] inputs = new int[8];
+        private int[] outputs = new int[8];
+        private int power;
+        private int output;
+        private Class_ArrayElement[] inElements = new Class_ArrayElement[8];
+        private Class_ArrayElement[] outElements = new Class_ArrayElement[8];
+        public event EventHandler<Class_CheckChanges> ChangeMainPoint;
+        public virtual void Calculate() { }
 
         public Avalonia.Point Main_Point
         {
@@ -29,30 +36,36 @@ namespace RGR.Models
             }
         }
 
-        public int Input1
+        public int Power
         {
-            get => input1;
-            set=> SetAndRaise(ref input1, value);
+            get => power;
+            set=> SetAndRaise(ref power, value);
         }
 
-        public int Input2
+        public int OUTPUT
         {
-            get => input2;
-            set=> SetAndRaise(ref input2, value);
+            get => output;
+            set=> SetAndRaise(ref output, value);
         }
 
-        public int Output1
+        public Class_ArrayElement[] InElements
         {
-            get => output1;
-            set => SetAndRaise(ref output1, value);
+            get => inElements;
         }
 
-        public int Output2
+        public Class_ArrayElement[] OutElements
         {
-            get => output2;
-            set => SetAndRaise(ref output2, value);
+            get => outElements;
+        }
+        
+        public int[] Inputs
+        {
+            get => inputs;
         }
 
-        public event EventHandler<Class_CheckChanges> ChangeMainPoint;
+        public int[] Outputs
+        {
+            get => outputs;
+        }
     }
 }

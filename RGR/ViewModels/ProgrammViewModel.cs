@@ -121,39 +121,111 @@ namespace RGR.ViewModels
 
         public void DeleteElement()
         {
-            ObservableCollection<Full_Elements> tempCollection = this.All_Elements;
+            ObservableCollection<Full_Elements> tempCollection = All_Elements;
 
             for (int i = tempCollection.Count - 1; i >= 0; i--)
             {   
-                if (tempCollection[i] is Class_Line tempLine)
+                if (tempCollection[i] is Full_Elements tempElement)
                 {
-                    if (tempLine == this.Selected_Element)
+                    if (tempElement is Class_Line tempLine)
                     {
-                        this.All_Elements.RemoveAt(i);
-                    }
-                    if (tempLine.FirstElement != null)
-                    {
-                        if (tempLine.FirstElement == this.Selected_Element)
+                        if (tempLine == Selected_Element)
                         {
-                            this.All_Elements.RemoveAt(i);
+                            int index1 = 0, index2 = 0;
+
+                            for (int j = 0; j < 8; j++)
+                            {
+                                if (tempLine.InElements[j] != null)
+                                {
+                                    // System.Diagnostics.Debug.WriteLine("InElements");
+                                    // System.Diagnostics.Debug.WriteLine(j);
+                                    // System.Diagnostics.Debug.WriteLine(tempLine.InElements[j].Index);
+                                    tempLine.InElements[j].Element.OutElements[j] = null;
+                                    index1 = j;
+                                }
+                                
+                                if (tempLine.OutElements[j] != null)
+                                {
+                                    // System.Diagnostics.Debug.WriteLine("OutElements");
+                                    // System.Diagnostics.Debug.WriteLine(j);
+                                    // System.Diagnostics.Debug.WriteLine(tempLine.OutElements[j].Index);
+                                    tempLine.OutElements[j].Element.InElements[j] = null;
+                                    index2 = j;
+                                }
+                            }
+
+                            // System.Diagnostics.Debug.WriteLine("index1 " + index1.ToString());
+                            // System.Diagnostics.Debug.WriteLine("index2 " + index2.ToString());
+                            PowerCalculate(tempLine.OutElements[index2].Element);
+                            tempLine.InElements[index1] = null;
+                            tempLine.OutElements[index2] = null;
+                            All_Elements.RemoveAt(i);
+                            break;
+                        }
+                        else
+                        {
+                            if (tempLine.FirstElement == Selected_Element || tempLine.SecondElement == Selected_Element)
+                            {
+                                for (int j = 0; j < 8; j++)
+                                {
+                                    if (tempLine.InElements[j] != null)
+                                    {
+                                        tempLine.InElements[j] = null;
+                                    }
+                                    
+                                    if (tempLine.OutElements[j] != null)
+                                    {
+                                        tempLine.OutElements[j] = null;
+                                    }
+                                }
+
+                                All_Elements.RemoveAt(i);
+                            }
                         }
                     }
-                    if (tempLine.SecondElement != null)
+                    else
                     {
-                        if (tempLine.SecondElement == this.Selected_Element)
+                        if (tempElement == Selected_Element)
                         {
-                            this.All_Elements.RemoveAt(i);
+                            for (int j = 0; j < 8; j++)
+                            {
+                                if (tempElement.InElements[j] != null)
+                                {
+                                    tempElement.InElements[j].Element.OutElements[tempElement.InElements[j].Index] = null;
+                                    tempElement.InElements[j] = null;
+                                }
+                                
+                                if (tempElement.OutElements[j] != null)
+                                {
+                                    tempElement.OutElements[j].Element.InElements[tempElement.OutElements[j].Index] = null;
+                                    PowerCalculate(tempElement.OutElements[j].Element);
+                                    tempElement.OutElements[j] = null;
+                                }
+                            }
+
+                            All_Elements.RemoveAt(i);
+                            break;
                         }
-                    }
-                }
-                else if (tempCollection[i] is Full_Elements tempElement)
-                {
-                    if (tempElement == this.Selected_Element)
-                    {
-                        this.All_Elements.RemoveAt(i);
                     }
                 }
             }
+        }
+
+        public void PowerCalculate(Full_Elements element)
+        {
+            System.Diagnostics.Debug.WriteLine("PowerCalculate START");
+            
+            element.Calculate();
+            
+            for (int i = 0; i < 8; i++)
+            {
+                if (element.OutElements[i] != null)
+                {
+                    PowerCalculate(element.OutElements[i].Element);
+                }
+            }
+            
+            System.Diagnostics.Debug.WriteLine("PowerCalculate END");
         }
     }
 }

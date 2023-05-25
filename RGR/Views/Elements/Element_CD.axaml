@@ -1,0 +1,27 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:RGR.Views.Elements">
+  <Design.PreviewWith>
+    <controls:Element_CD />
+  </Design.PreviewWith>
+
+  <Style Selector="controls|Element_CD">
+    <!-- Set Defaults -->
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Canvas Width="120" Height="70" Background="Transparent">
+          <Border  BorderBrush="Black" BorderThickness="2" Canvas.Left="10" Width="100" Height="70">
+            <TextBlock Text="CD" HorizontalAlignment="Center" FontSize="20"/>
+          </Border>
+          <Ellipse Name="in0" Fill="Gray" Stroke="Black" StrokeThickness="1" Height="10" Width="10" Canvas.Top="5" Canvas.Left="0"/>
+          <Ellipse Name="in1" Fill="Gray" Stroke="Black" StrokeThickness="1" Height="10" Width="10" Canvas.Top="20" Canvas.Left="0"/>
+          <Ellipse Name="in2" Fill="Gray" Stroke="Black" StrokeThickness="1" Height="10" Width="10" Canvas.Top="40" Canvas.Left="0"/>
+          <Ellipse Name="in3" Fill="Gray" Stroke="Black" StrokeThickness="1" Height="10" Width="10" Canvas.Top="55" Canvas.Left="0"/>
+          <Ellipse Name="out0" Fill="Gray" Stroke="Black" StrokeThickness="1" Height="10" Width="10" Canvas.Top="10" Canvas.Left="110"/>
+          <Ellipse Name="out1" Fill="Gray" Stroke="Black" StrokeThickness="1" Height="10" Width="10" Canvas.Top="50" Canvas.Left="110"/>
+          <Rectangle Fill="Transparent" Canvas.Left="10" Width="100" Height="70"/>
+        </Canvas>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

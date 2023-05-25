@@ -8,24 +8,30 @@ namespace RGR.Models
 {
     public class Class_Or : Full_Elements
     {
-        public void Value_And()
+        public override void Calculate()
         {
-            if (Input1 == 0 && Input2 == 0)
+            Outputs[0] = 0;
+            Power = 0;
+
+            for (int i = 0; i < 8; i++)
             {
-                Output1 = 0;
+                if (InElements[i] != null)
+                {
+                    if (InElements[i].Element.Power != 0)
+                    {
+                        System.Diagnostics.Debug.WriteLine("OR " + i + " = " + InElements[i].Element.Outputs[InElements[i].Index].ToString());
+                        Outputs[0] |= InElements[i].Element.Outputs[InElements[i].Index];
+                        Power = 1;
+                    }
+                }
             }
-            else if (Input1 == 1 && Input2 == 0)
+
+            if (Power == 0)
             {
-                Output1 = 1;
+                Outputs[0] = 0;
             }
-            else if (Input1 == 0 && Input2 == 1)
-            {
-                Output1 = 1;
-            }
-            else if (Input1 == 1 && Input2 == 1)
-            {
-                Output1 = 1;
-            }
+
+            System.Diagnostics.Debug.WriteLine("OR FINAL " + Outputs[0].ToString());
         }
     }
 }

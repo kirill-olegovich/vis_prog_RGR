@@ -8,24 +8,51 @@ namespace RGR.Models
 {
     public class Class_XoR : Full_Elements
     {
-        public void Value_And()
+        public override void Calculate()
         {
-            if (Input1 == 0 && Input2 == 0)
+            Outputs[0] = 0;
+            Power = 0;
+
+
+            if (InElements[0] != null && InElements[1] != null)
             {
-                Output1 = 0;
+                if (InElements[0].Element.Power != 0 && InElements[1].Element.Power != 0)
+                {
+                    if (InElements[0].Element.Outputs[InElements[0].Index] != InElements[1].Element.Outputs[InElements[1].Index])
+                    {
+                        Outputs[0] = 1;
+                    }
+                    else
+                    {
+                        Outputs[0] = 0;
+                    }
+
+                    Power = 1;
+                }
+                else if (InElements[0].Element.Power != 0 || InElements[1].Element.Power != 0)
+                {
+                    Outputs[0] = 1;
+                    Power = 1;
+                }
             }
-            else if (Input1 == 1 && Input2 == 0)
+            else if (InElements[0] != null)
             {
-                Output1 = 1;
+                if (InElements[0].Element.Power != 0)
+                {
+                    Outputs[0] = 1;
+                    Power = 1;
+                }
             }
-            else if (Input1 == 0 && Input2 == 1)
+            else if (InElements[1] != null)
             {
-                Output1 = 1;
+                if (InElements[1].Element.Power != 0)
+                {
+                    Outputs[0] = 1;
+                    Power = 1;
+                }
             }
-            else if (Input1 == 1 && Input2 == 1)
-            {
-                Output1 = 0;
-            }
+
+            System.Diagnostics.Debug.WriteLine("XOR FINAL " + Outputs[0].ToString());
         }
     }
 }
