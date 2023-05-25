@@ -15,6 +15,7 @@ namespace RGR.Models
         private Class_ArrayElement[] outElements = new Class_ArrayElement[8];
         public event EventHandler<Class_CheckChanges> ChangeMainPoint;
         public virtual void Calculate() { }
+        private string name;
 
         public Avalonia.Point Main_Point
         {
@@ -40,6 +41,12 @@ namespace RGR.Models
         {
             get => power;
             set=> SetAndRaise(ref power, value);
+        }
+
+        public string Name
+        {
+            get => name;
+            set => SetAndRaise(ref name, value);
         }
 
         public int OUTPUT

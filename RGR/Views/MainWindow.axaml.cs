@@ -12,6 +12,7 @@ namespace RGR.Views
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainWindowViewModel(this);
         }
         public void Exit_programm(object sender, RoutedEventArgs eventArgs)
         {
@@ -31,23 +32,24 @@ namespace RGR.Views
             programm.Closing += Exit_programm2;
         }
 
-        public async void OpenFile(object sender, RoutedEventArgs args)
+        public async void OpenSecondWindow(object sender, RoutedEventArgs eventArgs)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            programm = new Programm();
+            this.Hide();
+            programm.Show();
+            programm.Closing += Exit_programm2;
 
-            openFileDialog.AllowMultiple = true;
+            programm.LoadFile(null, null);
 
-            string[]? result = await openFileDialog.ShowAsync(this);
+        }
 
-            if(DataContext is MainWindowViewModel mainWindowViewModel)
+        public void ButtonClick(object sender, RoutedEventArgs eventArgs)
+        {
+            if (DataContext is MainWindowViewModel mainWindowViewModel)
             {
-                if (result != null)
+                if (sender is Button button)
                 {
-                    mainWindowViewModel.Path = string.Join(';', result);
-                }
-                else
-                {
-                    mainWindowViewModel.Path = "Window was canceled";
+                    mainWindowViewModel.Check_button(button.Name);
                 }
             }
         }
