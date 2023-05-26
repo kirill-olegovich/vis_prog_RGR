@@ -28,6 +28,11 @@ namespace RGR.Views
 
         public object InElements { get; private set; }
 
+        public ProgrammViewModel GetProgrammViewModel()
+        {
+        	return (ProgrammViewModel)DataContext;
+        }
+
         public void ButtonClick(object sender, RoutedEventArgs eventArgs)
 		{
 			if (DataContext is ProgrammViewModel viewModel)

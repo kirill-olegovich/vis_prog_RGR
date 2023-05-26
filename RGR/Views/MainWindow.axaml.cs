@@ -52,6 +52,11 @@ namespace RGR.Views
             }
         }
 
+        public Programm GetProgramm()
+        {
+            return programm;
+        }
+
         //public async void SaveFile(object sender, RoutedEventArgs args)
         //{
         //    SaveFileDialog saveFileDialog = new SaveFileDialog();

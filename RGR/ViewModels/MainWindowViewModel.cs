@@ -1,4 +1,5 @@
-﻿using ReactiveUI;
+﻿using Avalonia.Interactivity;
+using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Text;
