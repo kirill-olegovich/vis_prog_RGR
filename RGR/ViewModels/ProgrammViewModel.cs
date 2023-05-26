@@ -12,23 +12,58 @@ namespace RGR.ViewModels
     public class ProgrammViewModel : ViewModelBase
     {
         private int button_number;
-        private ObservableCollection<Full_Elements> all_elements;
+        private int selectedCircuit;
+        // private ObservableCollection<Class_Circuit> circuits;
+        private Class_Project project;
+        private ObservableCollection<Full_Elements> elementsToDraw;
         private Full_Elements selected_element;
+
+        public ProgrammViewModel()
+        {
+            Project = new Class_Project();
+            Project.Circuits.Add(new Class_Circuit());
+            ElementsToDraw = Project.Circuits[0].Elements;
+        }
 
         public int Button_Number
         {
             get => button_number;
             set => this.RaiseAndSetIfChanged(ref button_number, value);
         }
-        public ProgrammViewModel()
+
+        public int SelectedCircuit
         {
-            all_elements = new ObservableCollection<Full_Elements>();
+            get => selectedCircuit;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref selectedCircuit, value);
+
+                if (SelectedCircuit < 0)
+                {
+                    SelectedCircuit = 0;
+                }
+
+                if (Project.Circuits.Count == 0)
+                {
+                    ElementsToDraw = null;
+                }
+                else
+                {
+                    ElementsToDraw = Project.Circuits[SelectedCircuit].Elements;
+                }
+            }
         }
 
-        public ObservableCollection<Full_Elements> All_Elements
+        public Class_Project Project
         {
-            get => all_elements;
-            set => this.RaiseAndSetIfChanged(ref all_elements, value);
+            get => project;
+            set => this.RaiseAndSetIfChanged(ref project, value);
+        }
+
+        public ObservableCollection<Full_Elements> ElementsToDraw
+        {
+            get => elementsToDraw;
+            set => this.RaiseAndSetIfChanged(ref elementsToDraw, value);
         }
 
         public Full_Elements Selected_Element
@@ -37,6 +72,15 @@ namespace RGR.ViewModels
             set => this.RaiseAndSetIfChanged(ref selected_element, value);
         }
 
+        public ObservableCollection<Class_Circuit> DrawCircuitsList
+        {
+            get => Project.Circuits;
+        }
+
+        public string DrawProjectName
+        {
+            get => Project.NameProject;
+        }
 
         public void Take_Button_Name(string name)
         {
@@ -121,7 +165,7 @@ namespace RGR.ViewModels
 
         public void DeleteElement()
         {
-            ObservableCollection<Full_Elements> tempCollection = All_Elements;
+            ObservableCollection<Full_Elements> tempCollection = Project.Circuits[SelectedCircuit].Elements;
 
             for (int i = tempCollection.Count - 1; i >= 0; i--)
             {   
@@ -154,12 +198,10 @@ namespace RGR.ViewModels
                                 }
                             }
 
-                            // System.Diagnostics.Debug.WriteLine("index1 " + index1.ToString());
-                            // System.Diagnostics.Debug.WriteLine("index2 " + index2.ToString());
                             PowerCalculate(tempLine.OutElements[index2].Element);
                             tempLine.InElements[index1] = null;
                             tempLine.OutElements[index2] = null;
-                            All_Elements.RemoveAt(i);
+                            Project.Circuits[SelectedCircuit].Elements.RemoveAt(i);
                             break;
                         }
                         else
@@ -179,7 +221,7 @@ namespace RGR.ViewModels
                                     }
                                 }
 
-                                All_Elements.RemoveAt(i);
+                                Project.Circuits[SelectedCircuit].Elements.RemoveAt(i);
                             }
                         }
                     }
@@ -203,7 +245,7 @@ namespace RGR.ViewModels
                                 }
                             }
 
-                            All_Elements.RemoveAt(i);
+                            Project.Circuits[SelectedCircuit].Elements.RemoveAt(i);
                             break;
                         }
                     }
@@ -213,7 +255,7 @@ namespace RGR.ViewModels
 
         public void PowerCalculate(Full_Elements element)
         {
-            System.Diagnostics.Debug.WriteLine("PowerCalculate START");
+            // System.Diagnostics.Debug.WriteLine("PowerCalculate START");
             
             element.Calculate();
             
@@ -225,7 +267,7 @@ namespace RGR.ViewModels
                 }
             }
             
-            System.Diagnostics.Debug.WriteLine("PowerCalculate END");
+            // System.Diagnostics.Debug.WriteLine("PowerCalculate END");
         }
     }
 }

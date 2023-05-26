@@ -64,7 +64,7 @@
     </Border>
     <Border BorderBrush="Black" BorderThickness="1" Width="{Binding $parent[Window].Width}">
       <Grid  ColumnDefinitions="1250, *"  RowDefinitions="1000" ShowGridLines="True">
-        <ItemsControl PointerPressed="PointerPressedOnCanvas" DoubleTapped="DoubleTapOnCanvas" Items="{Binding All_Elements}"  Grid.Column="0" Grid.Row="0">
+        <ItemsControl PointerPressed="PointerPressedOnCanvas" DoubleTapped="DoubleTapOnCanvas" Items="{Binding ElementsToDraw}"  Grid.Column="0" Grid.Row="0">
 
           <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
@@ -160,6 +160,29 @@
           </ItemsControl.DataTemplates>
         </ItemsControl>
         
+        <ItemsControl Grid.Column="1" Grid.Row="0" DoubleTapped="DoubleTapOnCanvas2">
+          
+          <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+              <Canvas Name="Circuits" Background="Silver"/>
+            </ItemsPanelTemplate>
+          </ItemsControl.ItemsPanel>
+		 
+          <StackPanel>
+            <TextBlock Text="{Binding DrawProjectName}"/>
+
+            <ListBox Items="{Binding DrawCircuitsList}" SelectedIndex="{Binding SelectedCircuit}">
+              <ListBox.ItemTemplate>
+                <DataTemplate>
+                  <TextBlock Text="{Binding NameCircuit}"/>
+                </DataTemplate>
+              </ListBox.ItemTemplate>
+            </ListBox>
+
+            <Button Click="CreateCurcuit" BorderThickness="1" BorderBrush="Black" Content="Создать" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Button Click="DeleteCurcuit" BorderThickness="1" BorderBrush="Black" Content="Удалить" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+  		    </StackPanel>
+        </ItemsControl>
       </Grid>
     </Border>
   </StackPanel>
