@@ -6,7 +6,7 @@ namespace RGR.ViewModels
 {
     public class ChangeNameWindowViewModel : ViewModelBase
     {
-        private string nameCircuit = string.Empty;
+        private string newName = string.Empty;
         private Class_Circuit? circuit;
         private Class_Project? project;
 
@@ -28,33 +28,33 @@ namespace RGR.ViewModels
             project = changeElement;
         }
 
-        public string NameCircuit
+        public string NewName
         {
-            get => nameCircuit;
-            set => this.RaiseAndSetIfChanged(ref nameCircuit, value);
+            get => newName;
+            set => this.RaiseAndSetIfChanged(ref newName, value);
         }
 
         public void ButtonSave()
         {
             if (circuit != null)
             {
-                if (string.IsNullOrWhiteSpace(NameCircuit) == false)
+                if (string.IsNullOrWhiteSpace(NewName) == false)
                 {
-                    circuit.NameCircuit = NameCircuit;
+                    circuit.NameCircuit = NewName;
                 }
             }
             else if (project != null)
             {
-                if (string.IsNullOrWhiteSpace(NameCircuit))
+                if (string.IsNullOrWhiteSpace(NewName) == false)
                 {
-                    project.NameProject = NameCircuit;
+                    project.NameProject = NewName;
                 }
             }
         }
 
         public void ButtonClear()
         {
-            NameCircuit = string.Empty;
+            NewName = string.Empty;
         }
     }
 }

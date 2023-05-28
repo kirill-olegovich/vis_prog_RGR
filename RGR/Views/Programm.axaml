@@ -167,26 +167,23 @@
               <Canvas Name="Circuits" Background="Silver"/>
             </ItemsPanelTemplate>
           </ItemsControl.ItemsPanel>
-		 
+
           <StackPanel>
-            <TextBlock Text="{Binding Project.NameProject}"/>
+            <TextBlock Text="{Binding Project.NameProject}" />
 
             <ListBox Items="{Binding Project.Circuits}" SelectedIndex="{Binding SelectedCircuit}">
               <ListBox.ItemTemplate>
                 <DataTemplate>
-                  <TextBlock Text="{Binding NameCircuit}"/>
+                  <TextBlock Text="{Binding NameCircuit}" />
                 </DataTemplate>
               </ListBox.ItemTemplate>
             </ListBox>
 
             <Button Command="{Binding CreateCurcuit}" BorderThickness="1" BorderBrush="Black" Content="Создать" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             <Button Command="{Binding DeleteCurcuit}" BorderThickness="1" BorderBrush="Black" Content="Удалить" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-  		    </StackPanel>
+          </StackPanel>
         </ItemsControl>
       </Grid>
     </Border>
   </StackPanel>
-  
-  
-  
 </Window>
