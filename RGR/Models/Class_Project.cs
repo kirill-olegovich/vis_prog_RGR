@@ -10,7 +10,7 @@ namespace RGR.Models
 
         public Class_Project()
         {
-        	NameProject = "Untitled";
+        	NameProject = "UntitledProject";
         	Circuits = new ObservableCollection<Class_Circuit>();
         }
 

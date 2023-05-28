@@ -13,7 +13,6 @@ namespace RGR.ViewModels
     {
         private int button_number;
         private int selectedCircuit;
-        // private ObservableCollection<Class_Circuit> circuits;
         private Class_Project project;
         private ObservableCollection<Full_Elements> elementsToDraw;
         private Full_Elements selected_element;
@@ -70,16 +69,6 @@ namespace RGR.ViewModels
         {
             get => selected_element;
             set => this.RaiseAndSetIfChanged(ref selected_element, value);
-        }
-
-        public ObservableCollection<Class_Circuit> DrawCircuitsList
-        {
-            get => Project.Circuits;
-        }
-
-        public string DrawProjectName
-        {
-            get => Project.NameProject;
         }
 
         public void Take_Button_Name(string name)
@@ -273,15 +262,23 @@ namespace RGR.ViewModels
         public void SaveCollection(string path)
         {
             var xmlCollectionSaver = new XML_Saver();
-            xmlCollectionSaver.Save(Project.Circuits[0].Elements, path);
+            xmlCollectionSaver.Save(Project, path);
         }
 
         public void LoadCollection(string path)
         {
             var xmlCollectionLoader = new XML_Loader();
-            Project.Circuits[0].Elements = new ObservableCollection<Full_Elements>(xmlCollectionLoader.Load(path));
-            Class_Line templines = new Class_Line();
-            templines.CheckLines(Project.Circuits[0].Elements);
+            Project = xmlCollectionLoader.Load(path);
+        }
+
+        public void CreateCurcuit()
+        {
+            Project.Circuits.Add(new Class_Circuit());
+        }
+
+        public void DeleteCurcuit()
+        {
+            Project.Circuits.RemoveAt(SelectedCircuit);
         }
     }
 }
