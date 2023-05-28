@@ -1,9 +1,14 @@
+using Avalonia.Controls.Shapes;
 using Avalonia.Interactivity;
 using ReactiveUI;
+using RGR.Models;
 using RGR.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
+using System.Diagnostics;
+
 
 namespace RGR.ViewModels
 {
@@ -11,6 +16,7 @@ namespace RGR.ViewModels
     {
         public string path;
         public MainWindow mainWindow;
+        private ObservableCollection<Class_Project> projectsToHistory;
 
         public string Path
         {
@@ -27,6 +33,10 @@ namespace RGR.ViewModels
         public MainWindowViewModel(MainWindow mainWindow1)
         {
             mainWindow = mainWindow1;
+            projectsToHistory = new ObservableCollection<Class_Project>();
+            var colectionLoad = new YAML_Loader();
+            ProjectsToHistory = new ObservableCollection<Class_Project>(colectionLoad.YAML_Load());
+            //mainWindow.LoadCollection();
         }
 
         public void Check_button(string name)
@@ -40,5 +50,35 @@ namespace RGR.ViewModels
                 mainWindow.OpenSecondWindow(null, null);
             }
         }
+
+        public ObservableCollection<Class_Project> ProjectsToHistory
+        {
+            get => projectsToHistory;
+            set => this.RaiseAndSetIfChanged(ref projectsToHistory, value);
+        }
+
+        public void DoubleTap()
+        {
+            Debug.WriteLine(ProjectsToHistory[0].Path);
+            ProgrammViewModel dt = new ProgrammViewModel();
+            dt.LoadCollection(ProjectsToHistory[0].Path);
+            
+        }
+
+        //public void LoadCollection()
+        //{
+
+        //    //foreach (var sourcee in ProjectsToHistory)
+        //    //{
+        //    //    Debug.WriteLine(1);
+        //    //    if (sourcee is string) Debug.WriteLine(sourcee);
+        //    //}
+        //    Debug.WriteLine(ProjectsToHistory[0].NameProject);
+        //    Debug.WriteLine(ProjectsToHistory[0].Path);
+
+
+        //    Debug.WriteLine(1);
+        //    //Debug.WriteLine(ProjectsToHistory.);
+        //}
     }
 }

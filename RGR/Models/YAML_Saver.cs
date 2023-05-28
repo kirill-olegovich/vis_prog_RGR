@@ -11,16 +11,16 @@ namespace RGR.Models
 {
     public class YAML_Saver : ICollectionProjectSaver
     {
-        public void SaveYAML(IEnumerable<Class_Project> collection)
+        //public void SaveYAML(IEnumerable<Class_Project> collection)
+        public void SaveYAML(Class_Project collection)
         {
             var serializer = new SerializerBuilder()
                  .WithNamingConvention(CamelCaseNamingConvention.Instance)
-                 .WithTagMapping("!name", typeof(Class_Project))
-                 .WithTagMapping("!path", typeof(Class_Project))
+                 .WithTagMapping("!project", typeof(Class_Project))
                  .WithIndentedSequences()
                  .Build();
             var yaml = serializer.Serialize(collection);
-            using (StreamWriter writer = new StreamWriter(@"..\..\..\all_proj.yaml", false))
+            using (StreamWriter writer = new StreamWriter(@"..\..\..\all_proj.yaml", true))
             {
                 writer.WriteLine(yaml);
             }

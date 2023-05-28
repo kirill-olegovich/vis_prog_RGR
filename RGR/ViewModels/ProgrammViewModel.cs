@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RGR.Models;
+using System.Diagnostics;
 
 namespace RGR.ViewModels
 {
@@ -281,8 +282,13 @@ namespace RGR.ViewModels
         {
             var xmlCollectionSaver = new XML_Saver();
             var projectCollectionSaver = new YAML_Saver();
+            ProgrammViewModel vm = new ProgrammViewModel();
+            Class_Project temp = new Class_Project();
+            string[] words = path.Split('\\');
+            temp.NameProject = words[words.Length - 1];
+            temp.Path = path;
             xmlCollectionSaver.Save(Project.Circuits[0].Elements, path);
-            projectCollectionSaver.SaveYAML(All_Projects);
+            projectCollectionSaver.SaveYAML(temp);
         }
 
         public void LoadCollection(string path)

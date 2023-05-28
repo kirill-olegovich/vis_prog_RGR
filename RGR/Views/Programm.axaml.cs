@@ -449,6 +449,9 @@ namespace RGR.Views
             });
 
             string[]? path = await openFileDialog.ShowAsync(this);
+            Debug.WriteLine(3030);
+			Debug.WriteLine(path[0]);
+            Debug.WriteLine(3030);
             if (path != null)
             {
                 if (this.DataContext is ProgrammViewModel programmWindowViewModel)

@@ -2,6 +2,7 @@
 using Avalonia.Interactivity;
 using System.ComponentModel;
 using RGR.ViewModels;
+using System.Security.Cryptography;
 
 namespace RGR.Views
 {
@@ -13,6 +14,8 @@ namespace RGR.Views
         {
             InitializeComponent();
             DataContext = new MainWindowViewModel(this);
+            //MainWindowViewModel loadvar = new MainWindowViewModel(this);
+            //loadvar.LoadCollection();
         }
         public void Exit_programm(object sender, RoutedEventArgs eventArgs)
         {
@@ -51,6 +54,25 @@ namespace RGR.Views
                 {
                     mainWindowViewModel.Check_button(button.Name);
                 }
+            }
+        }
+
+        private void DoubleTap(object sender, RoutedEventArgs e)
+        {
+            var mwvm = (MainWindowViewModel)DataContext;
+            if (mwvm == null) return;
+
+            var src = e.Source;
+            if (src == null) return;
+
+            var name = src.GetType().Name;
+            if (name == "TextBlock")
+            {
+                programm = new Programm();
+                this.Hide();
+                programm.Show();
+                programm.Closing += Exit_programm2;
+                mwvm.DoubleTap();
             }
         }
 
