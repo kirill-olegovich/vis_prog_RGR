@@ -16,6 +16,7 @@ namespace RGR.ViewModels
         // private ObservableCollection<Class_Circuit> circuits;
         private Class_Project project;
         private ObservableCollection<Full_Elements> elementsToDraw;
+        private ObservableCollection<Class_Project> all_projects;
         private Full_Elements selected_element;
 
         public ProgrammViewModel()
@@ -64,6 +65,12 @@ namespace RGR.ViewModels
         {
             get => elementsToDraw;
             set => this.RaiseAndSetIfChanged(ref elementsToDraw, value);
+        }
+
+        public ObservableCollection<Class_Project> All_Projects
+        {
+            get => all_projects;
+            set => this.RaiseAndSetIfChanged(ref all_projects, value);
         }
 
         public Full_Elements Selected_Element
@@ -273,7 +280,9 @@ namespace RGR.ViewModels
         public void SaveCollection(string path)
         {
             var xmlCollectionSaver = new XML_Saver();
+            var projectCollectionSaver = new YAML_Saver();
             xmlCollectionSaver.Save(Project.Circuits[0].Elements, path);
+            projectCollectionSaver.SaveYAML(All_Projects);
         }
 
         public void LoadCollection(string path)
