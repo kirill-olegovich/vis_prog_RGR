@@ -57,7 +57,7 @@
         <Button Name="button7" Click="ButtonClick" BorderThickness="1" BorderBrush="Black" Height="70" Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
           <Grid RowDefinitions="35, 35">
             <Image Grid.Row="0" Stretch="2" Source="/Assets/DC.png"/>
-            <TextBlock Grid.Row="1" Text="ДЕШИФРАТОР" TextAlignment="Center"/>
+            <TextBlock Grid.Row="1" Text="ПОЛНЫЙ СУММАТОР" TextAlignment="Center"/>
           </Grid>
         </Button>
       </WrapPanel>
@@ -97,21 +97,21 @@
               </views:Element_HalfSum>
             </DataTemplate> -->
             
-<!--             <DataTemplate DataType="{x:Type models:Class_Sum}">
+                <DataTemplate DataType="{x:Type models:Class_Sum}">
               <views:Element_Sum>
                 <views:Element_Sum.RenderTransform>
                   <TranslateTransform X="{Binding Main_Point.X}" Y="{Binding Main_Point.Y}"/>
                 </views:Element_Sum.RenderTransform>
               </views:Element_Sum>
-            </DataTemplate> -->
+            </DataTemplate> 
 
-            <DataTemplate DataType="{x:Type models:Class_DC}">
+			  <!--<DataTemplate DataType="{x:Type models:Class_DC}">
               <views:Element_DC>
                 <views:Element_DC.RenderTransform>
                   <TranslateTransform X="{Binding Main_Point.X}" Y="{Binding Main_Point.Y}"/>
                 </views:Element_DC.RenderTransform>
               </views:Element_DC>
-            </DataTemplate>
+            </DataTemplate> -->
 
 <!--             <DataTemplate DataType="{x:Type models:Class_CD}">
               <views:Element_CD>

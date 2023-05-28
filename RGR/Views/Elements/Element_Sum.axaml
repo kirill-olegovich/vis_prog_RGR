@@ -11,7 +11,7 @@
       <ControlTemplate>
         <Canvas Width="120" Height="70" Background="Transparent">
           <Border  BorderBrush="Black" BorderThickness="2" Canvas.Left="10" Width="100" Height="70"></Border>
-          <TextBlock Text="HS" Canvas.Left="45" FontSize="20"/>
+          <TextBlock Text="SUM" Canvas.Left="35" FontSize="20"/>
           <TextBlock Text="P"  Canvas.Left="90" Canvas.Top="3" FontSize="20"/>
           <TextBlock Text="S"  Canvas.Left="90" Canvas.Top="43" FontSize="20"/>
           <Ellipse Name="in0" Fill="Gray" Stroke="Black" StrokeThickness="1" Height="10" Width="10" Canvas.Top="10" Canvas.Left="0"/>

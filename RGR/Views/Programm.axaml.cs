@@ -147,33 +147,13 @@ namespace RGR.Views
                 }
 				else if (viewModel.Button_Number == 7)
 				{
-                    // viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_HalfSum
-                    // {
-                    //     Main_Point = pointPointerPressed,
-                    //     Name = $"element_halfsum{counter_halfsum}"
-                    // });
-                    // counter_halfsum += 1;
+					viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_Sum
+					{
+						Main_Point = pointPointerPressed,
+						Name = $"element_sum{counter_halfsum}"
+					});
+					counter_sum += 1;
 
-                    // viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_Sum
-                    // {
-                    //     Main_Point = pointPointerPressed,
-                    //     Name = $"element_sum{counter_halfsum}"
-                    // });
-                    // counter_sum += 1;
-
-                    viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_DC
-                    {
-                        Main_Point = pointPointerPressed,
-                        Name = $"element_dc{counter_halfsum}"
-                    });
-                    counter_dc += 1;
-
-                    // viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_CD
-                    // {
-                    //     Main_Point = pointPointerPressed,
-                    //     Name = $"element_cd{counter_halfsum}"
-                    // });
-                    // counter_cd += 1;
                 }
                 else if (viewModel.Button_Number == 0)
 				{

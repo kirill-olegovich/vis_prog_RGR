@@ -40,7 +40,7 @@ namespace RGR.Models
                 Power = 1;
             }
             
-            System.Diagnostics.Debug.WriteLine("HalfSum");
+            System.Diagnostics.Debug.WriteLine("Sum");
         }
     }
 }
