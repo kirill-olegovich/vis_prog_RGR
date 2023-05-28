@@ -276,7 +276,7 @@ namespace RGR.ViewModels
             string[] words = path.Split('\\');
             temp.NameProject = words[words.Length - 1];
             temp.Path = path;
-            xmlCollectionSaver.Save(Project.Circuits[0].Elements, path);
+            xmlCollectionSaver.Save(Project, path);
             projectCollectionSaver.SaveYAML(temp);
         }
 
