@@ -16,7 +16,7 @@
 
 	<StackPanel>
 		<Grid RowDefinitions="70*, 30*">
-			<ListBox Grid.Row="0" Items="{Binding ProjectsToHistory, Mode=OneWay}" DoubleTapped="DoubleTap" Width="350" Height="100">
+			<ListBox Grid.Row="0" SelectedIndex="{Binding currentIndexProperties}" Items="{Binding ProjectsToHistory, Mode=OneWay}" DoubleTapped="DoubleTap" Width="450" Height="260">
 				<ListBox.ItemTemplate>
 					<DataTemplate DataType="{x:Type locc:Class_Project}">
 						<Grid ColumnDefinitions="30*, 70*">
@@ -25,7 +25,7 @@
 					</DataTemplate>
 				</ListBox.ItemTemplate>
 			</ListBox>
-			<Grid Grid.Row="1" ColumnDefinitions="150, 150, 150" RowDefinitions="270, 30">
+			<Grid Grid.Row="1" ColumnDefinitions="150, 150, 150" RowDefinitions="270, 30" Margin="0 -260 0 0">
 				<Button Name="New_prog" Content="Новый проект" Grid.Column="0" Grid.Row="1" Width="150" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="Create_Programm"/>
 				<Button Name="Create_prog" Content="Загрузить проект" Grid.Column="1" Grid.Row="1" Width="150" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="OpenSecondWindow"/>
 				<Button Content="Выйти" Grid.Column="2" Grid.Row="1" Width="150" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="Exit_programm"/>

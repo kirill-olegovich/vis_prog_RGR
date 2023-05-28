@@ -13,3 +13,13 @@
   path: D:\УЧЕБА\2 курс\4 семестр\Визуальное программирование\kirill-oleg\vis_prog_RGR\testing333.xml
   circuits: []
 
+- !project
+  nameProject: test1.xml
+  path: D:\УЧЕБА\2 курс\4 семестр\Визуальное программирование\kirill-oleg\vis_prog_RGR\test1.xml
+  circuits: []
+
+- !project
+  nameProject: test2.xml
+  path: D:\УЧЕБА\2 курс\4 семестр\Визуальное программирование\kirill-oleg\vis_prog_RGR\test2.xml
+  circuits: []
+

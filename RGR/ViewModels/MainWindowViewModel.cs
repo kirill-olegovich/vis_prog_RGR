@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Diagnostics;
-
+using System.IO;
 
 namespace RGR.ViewModels
 {
@@ -59,10 +59,20 @@ namespace RGR.ViewModels
 
         public void DoubleTap()
         {
-            Debug.WriteLine(ProjectsToHistory[0].Path);
+            Debug.WriteLine(ProjectsToHistory[currentIndex].Path);
             ProgrammViewModel dt = new ProgrammViewModel();
-            dt.LoadCollection(ProjectsToHistory[0].Path);
+            dt.LoadCollection(ProjectsToHistory[currentIndex].Path);
+            Debug.WriteLine(ProjectsToHistory[currentIndex].Path);
             
+        }
+
+        private int currentIndex;
+        public int currentIndexProperties
+        {
+            get => currentIndex; set
+            {
+                this.RaiseAndSetIfChanged(ref currentIndex, value);
+            }
         }
 
         //public void LoadCollection()
