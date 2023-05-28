@@ -268,9 +268,16 @@ namespace RGR.Views
                         Element_ChangeName? changeNameWindow = new Element_ChangeName(circuitPtr);
                         changeNameWindow.ShowDialog(this);
 					}
-					else if (textBlock.DataContext is Class_Project project)
+					// else if (textBlock.DataContext is Class_Project project)
+					// {
+					// 	System.Diagnostics.Debug.WriteLine(123);
+					// 	Class_Project? projectPtr = project;
+                    //     Element_ChangeName? changeNameWindow = new Element_ChangeName(projectPtr);
+                    //     changeNameWindow.ShowDialog(this);
+					// }
+					else
 					{
-						Class_Project? projectPtr = project;
+						Class_Project? projectPtr = viewModel.Project;
                         Element_ChangeName? changeNameWindow = new Element_ChangeName(projectPtr);
                         changeNameWindow.ShowDialog(this);
 					}
