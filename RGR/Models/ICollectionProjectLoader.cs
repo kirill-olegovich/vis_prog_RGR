@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace RGR.Models
 {
-    public interface ICollectionProjectSaver
+    public interface ICollectionProjectLoader
     {
-        void SaveYAML(Class_Project collection);
+        IEnumerable<Class_Project> YAML_Load();
     }
 }
