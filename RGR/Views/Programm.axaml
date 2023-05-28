@@ -16,7 +16,7 @@
   </Window.KeyBindings>
 
   <StackPanel>
-    <Border  BorderBrush="Black" BorderThickness="3" Width="{Binding $parent[Window].Width}">
+    <Border  BorderBrush="Black" BorderThickness="1" Width="{Binding $parent[Window].Width}">
       <Menu HorizontalAlignment="Left" Width="60" Height="50">
         <MenuItem Header="Меню">
           <MenuItem Click="Create_Programm1" Header="Создать"/>
@@ -26,29 +26,29 @@
         </MenuItem>
       </Menu>
     </Border>
-    <Border BorderBrush="Black" BorderThickness="1" >
+    <Border BorderBrush="Black" BorderThickness="0" >
       <WrapPanel Width="{Binding $parent[Window].Width}" Height="70">
         <Button Name="button1" Click="ButtonClick" BorderThickness="1" BorderBrush="Black"  Height="70" Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
           <Grid RowDefinitions="35, 35">
-            <Image Grid.Row="0" Stretch="2" Source="/Assets/AND.png"/>
+            <Image Grid.Row="0" Stretch="2" Source="/Assets/AND-2.png"/>
             <TextBlock Grid.Row="1" Text="И" TextAlignment="Center"/>
           </Grid>
         </Button>
         <Button Name="button2" Click="ButtonClick" BorderThickness="1" BorderBrush="Black" Height="70" Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
           <Grid RowDefinitions="35, 35">
-            <Image Grid.Row="0" Stretch="2" Source="/Assets/OR.png"/>
+            <Image Grid.Row="0" Stretch="2" Source="/Assets/OR-2.png"/>
             <TextBlock Grid.Row="1" Text="ИЛИ" TextAlignment="Center"/>
           </Grid>
         </Button>
         <Button Name="button3" Click="ButtonClick" BorderThickness="1" BorderBrush="Black"  Height="70" Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
           <Grid RowDefinitions="35, 35">
-            <Image Grid.Row="0" Stretch="2" Source="/Assets/NOT.png"/>
+            <Image Grid.Row="0" Stretch="2" Source="/Assets/NOT-2.png"/>
             <TextBlock Grid.Row="1" Text="НЕ" TextAlignment="Center"/>
           </Grid>
         </Button>
         <Button Name="button4" Click="ButtonClick" BorderThickness="1" BorderBrush="Black" Height="70" Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
           <Grid RowDefinitions="35, 35">
-            <Image Grid.Row="0" Stretch="2" Source="/Assets/XOR.png"/>
+            <Image Grid.Row="0" Stretch="2" Source="/Assets/XOR-2.png"/>
             <TextBlock Grid.Row="1" Text="ИСКЛЮЧАЮЩЕЕ ИЛИ" TextAlignment="Center"/>
           </Grid>
         </Button>
@@ -56,7 +56,7 @@
         <Button Name="button6" Click="ButtonClick" BorderThickness="1" BorderBrush="Black" Content="ВЫХОД" Height="70" Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Button Name="button7" Click="ButtonClick" BorderThickness="1" BorderBrush="Black" Height="70" Width="200" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
           <Grid RowDefinitions="35, 35">
-            <Image Grid.Row="0" Stretch="2" Source="/Assets/DC.png"/>
+            <Image Grid.Row="0" Stretch="2" Source="/Assets/SUM.png"/>
             <TextBlock Grid.Row="1" Text="ПОЛНЫЙ СУММАТОР" TextAlignment="Center"/>
           </Grid>
         </Button>
@@ -154,7 +154,7 @@
             </DataTemplate>
             
             <DataTemplate DataType="{x:Type models:Class_Line}">
-              <Line StartPoint="{Binding StartPoint}" EndPoint="{Binding EndPoint}" Stroke="Black" StrokeThickness="5"/>
+              <Line StartPoint="{Binding StartPoint}" EndPoint="{Binding EndPoint}" Stroke="Green" StrokeThickness="2"/>
             </DataTemplate>
             
           </ItemsControl.DataTemplates>
@@ -168,7 +168,7 @@
             </ItemsPanelTemplate>
           </ItemsControl.ItemsPanel>
 		 
-          <StackPanel>
+          <StackPanel Margin="7">
             <TextBlock Text="{Binding DrawProjectName}"/>
 
             <ListBox Items="{Binding DrawCircuitsList}" SelectedIndex="{Binding SelectedCircuit}">

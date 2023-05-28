@@ -12,7 +12,7 @@
 		<Button Content="Сохранить" VerticalAlignment="Bottom"
 				HorizontalContentAlignment="Center"
 				Command="{Binding ButtonSave}"/>
-		<Button Content="Очистить" VerticalAlignment="Bottom"
+		<Button Width="91" Content="Очистить" VerticalAlignment="Bottom"
 				HorizontalContentAlignment="Center"
 				Command="{Binding ButtonClear}"/>
 	</StackPanel>
