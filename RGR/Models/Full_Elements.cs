@@ -4,7 +4,7 @@ using System;
 
 namespace RGR.Models
 {
-    public class Full_Elements : AbstractNotifyPropertyChanged
+    public abstract class Full_Elements : AbstractNotifyPropertyChanged
     {
         protected Avalonia.Point main_point;
         private int[] inputs = new int[8];

@@ -102,33 +102,33 @@ namespace RGR.Models
             }
         }
 
-        public void CheckLines(ObservableCollection<Full_Elements> currentcollection)
-        {
-            for (int i = currentcollection.Count - 1; i >= 0; i--)
-            {
-                if (currentcollection[i] is Class_Line currentLine)
-                {
-                    int findConection = 0;
-                    for (int j = 0; j < currentcollection.Count; j++)
-                    {
-                        if (j == i) continue;
-                        if (currentcollection[j] is Full_Elements currentClass)
-                        {
-                            if (currentClass.Name == currentLine.Name1)
-                            {
-                                currentLine.FirstElement = currentClass;
-                                findConection++;
-                            }
-                            if (currentClass.Name == currentLine.Name2)
-                            {
-                                currentLine.SecondElement = currentClass;
-                                findConection++;
-                            }
-                        }
-                        if (findConection == 2) break;
-                    }
-                }
-            }
-        }
+        // public void CheckLines(ObservableCollection<Full_Elements> currentcollection)
+        // {
+        //     for (int i = currentcollection.Count - 1; i >= 0; i--)
+        //     {
+        //         if (currentcollection[i] is Class_Line currentLine)
+        //         {
+        //             int findConection = 0;
+        //             for (int j = 0; j < currentcollection.Count; j++)
+        //             {
+        //                 if (j == i) continue;
+        //                 if (currentcollection[j] is Full_Elements currentClass)
+        //                 {
+        //                     if (currentClass.Name == currentLine.Name1)
+        //                     {
+        //                         currentLine.FirstElement = currentClass;
+        //                         findConection++;
+        //                     }
+        //                     if (currentClass.Name == currentLine.Name2)
+        //                     {
+        //                         currentLine.SecondElement = currentClass;
+        //                         findConection++;
+        //                     }
+        //                 }
+        //                 if (findConection == 2) break;
+        //             }
+        //         }
+        //     }
+        // }
     }
 }

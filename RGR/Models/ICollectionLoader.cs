@@ -8,6 +8,6 @@ namespace RGR.Models
 {
     public interface ICollectionLoader
     {
-        IEnumerable<Full_Elements> Load(string path);
+        Class_Project Load(string path);
     }
 }

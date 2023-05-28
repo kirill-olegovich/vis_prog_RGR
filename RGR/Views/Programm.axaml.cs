@@ -48,25 +48,6 @@ namespace RGR.Views
 			}
 		}
 
-        public void CreateCurcuit(object sender, RoutedEventArgs eventArgs)
-		{
-			if (DataContext is ProgrammViewModel viewModel)
-			{
-				viewModel.Project.Circuits.Add(new Class_Circuit());
-			}
-		}
-
-        public void DeleteCurcuit(object sender, RoutedEventArgs eventArgs)
-		{
-			if (DataContext is ProgrammViewModel viewModel)
-			{
-				if (viewModel.Project.Circuits.Count > 0)
-				{
-					viewModel.Project.Circuits.RemoveAt(viewModel.SelectedCircuit);
-				}
-			}
-		}
-
         public void Exit_programm2(object? sender, CancelEventArgs e)
         {
             this.Close();
@@ -281,7 +262,6 @@ namespace RGR.Views
 			{
 				if (e.Source is TextBlock textBlock)
 				{
-					System.Diagnostics.Debug.WriteLine(1);
 					if (textBlock.DataContext is Class_Circuit circuit)
 					{
 						Class_Circuit? circuitPtr = circuit;
@@ -290,7 +270,6 @@ namespace RGR.Views
 					}
 					else if (textBlock.DataContext is Class_Project project)
 					{
-						System.Diagnostics.Debug.WriteLine(2);
 						Class_Project? projectPtr = project;
                         Element_ChangeName? changeNameWindow = new Element_ChangeName(projectPtr);
                         changeNameWindow.ShowDialog(this);
