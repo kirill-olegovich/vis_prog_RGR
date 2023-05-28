@@ -10,16 +10,20 @@ using RGR.ViewModels;
 using System;
 using System.Collections.ObjectModel;
 using RGR.Views.Elements;
+using System.Diagnostics;
+using System.ComponentModel;
 
 namespace RGR.Views
 {
 	public partial class Programm : Window
 	{
+		private int counter_and = 0, counter_in = 0, counter_halfsum = 0, counter_sum = 0, counter_dc = 0, counter_cd = 0, counter_not = 0, counter_or = 0, counter_out = 0, counter_xor = 0;
 		public Point pointPointerPressed;
 		public Point pointerPositionIntoElement;
 		public Point startPoint;
 		public Point endPoint;
-		
+		private Programm programm1;
+
 		public Programm()
 		{
 			InitializeComponent();
@@ -63,6 +67,19 @@ namespace RGR.Views
 			}
 		}
 
+        public void Exit_programm2(object? sender, CancelEventArgs e)
+        {
+            this.Close();
+        }
+
+        public void Create_Programm1(object sender, RoutedEventArgs eventArgs)
+        {
+            programm1 = new Programm();
+            this.Hide();
+            programm1.Show();
+            programm1.Closing += Exit_programm2;
+        }
+
 		public void PointerPressedOnCanvas(object? sender, PointerPressedEventArgs pointerPressedEventArgs)
 		{
 			pointPointerPressed = pointerPressedEventArgs.GetPosition(this.GetVisualDescendants().OfType<Canvas>().FirstOrDefault());
@@ -74,36 +91,89 @@ namespace RGR.Views
 					return;
 				}
 
-				if (viewModel.Button_Number == 1)
-				{
-					viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_And { Main_Point = pointPointerPressed });
-				}
-				else if (viewModel.Button_Number == 2)
-				{
-					viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_Or { Main_Point = pointPointerPressed });
-				}
-				else if (viewModel.Button_Number == 3)
-				{
-					viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_Not { Main_Point = pointPointerPressed });
-				}
-				else if (viewModel.Button_Number == 4)
-				{
-					viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_XoR { Main_Point = pointPointerPressed });
-				}
-				else if (viewModel.Button_Number == 5)
-				{
-					viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_In { Main_Point = pointPointerPressed });
-				}
-				else if (viewModel.Button_Number == 6)
-				{
-					viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_Out { Main_Point = pointPointerPressed });
-				}
+                if (viewModel.Button_Number == 1)
+                {
+                    viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_And
+                    {
+                        Main_Point = pointPointerPressed,
+                        Name = $"element_and{counter_and}",
+                    });
+                    counter_and += 1;
+                }
+                else if (viewModel.Button_Number == 2)
+                {
+                    viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_Or
+                    {
+                        Main_Point = pointPointerPressed,
+                        Name = $"element_or{counter_or}",
+                    });
+                    counter_or += 1;
+                }
+                else if (viewModel.Button_Number == 3)
+                {
+                    viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_Not
+                    {
+                        Main_Point = pointPointerPressed,
+                        Name = $"element_not{counter_not}",
+                    });
+                    counter_not += 1;
+                }
+                else if (viewModel.Button_Number == 4)
+                {
+                    viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_XoR
+                    {
+                        Main_Point = pointPointerPressed,
+                        Name = $"element_xor{counter_xor}"
+                    });
+                    counter_xor += 1;
+                }
+                else if (viewModel.Button_Number == 5)
+                {
+                    viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_In
+                    {
+                        Main_Point = pointPointerPressed,
+                        Name = $"element_in{counter_in}"
+                    });
+                    counter_in += 1;
+                }
+                else if (viewModel.Button_Number == 6)
+                {
+                    viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_Out
+                    {
+                        Main_Point = pointPointerPressed,
+                        Name = $"element_out{counter_out}"
+                    });
+                    counter_out += 1;
+                }
 				else if (viewModel.Button_Number == 7)
 				{
-                    // viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_HalfSum { Main_Point = pointPointerPressed });
-                    viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_Sum { Main_Point = pointPointerPressed });
-                    // viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_DC { Main_Point = pointPointerPressed });
-                    // viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_CD { Main_Point = pointPointerPressed });
+                    // viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_HalfSum
+                    // {
+                    //     Main_Point = pointPointerPressed,
+                    //     Name = $"element_halfsum{counter_halfsum}"
+                    // });
+                    // counter_halfsum += 1;
+
+                    // viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_Sum
+                    // {
+                    //     Main_Point = pointPointerPressed,
+                    //     Name = $"element_sum{counter_halfsum}"
+                    // });
+                    // counter_sum += 1;
+
+                    viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_DC
+                    {
+                        Main_Point = pointPointerPressed,
+                        Name = $"element_dc{counter_halfsum}"
+                    });
+                    counter_dc += 1;
+
+                    // viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(new Class_CD
+                    // {
+                    //     Main_Point = pointPointerPressed,
+                    //     Name = $"element_cd{counter_halfsum}"
+                    // });
+                    // counter_cd += 1;
                 }
                 else if (viewModel.Button_Number == 0)
 				{
@@ -157,6 +227,7 @@ namespace RGR.Views
 								EndPoint = startPoint,
 								FirstElement = ellipse.DataContext as Full_Elements,
 								SecondElement = null,
+								Name1 = Name,
 							};
 
 							l.InElements[index] = new Class_ArrayElement { Element = ellipse.DataContext as Full_Elements };
@@ -170,10 +241,10 @@ namespace RGR.Views
 								EndPoint = startPoint,
 								FirstElement = ellipse.DataContext as Full_Elements,
 								SecondElement = null,
+								Name1 = Name,
 							};
 							
 							l.OutElements[index] = new Class_ArrayElement { Element = ellipse.DataContext as Full_Elements };
-
 							viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Add(l);
 						}
 
@@ -347,5 +418,44 @@ namespace RGR.Views
 				viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.RemoveAt(viewModel.Project.Circuits[viewModel.SelectedCircuit].Elements.Count - 1);
 			}
 		}
+
+        public async void SaveFile(object sender, RoutedEventArgs args)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+            saveFileDialog.Filters.Add(new FileDialogFilter
+            {
+                Name = "xml files",
+                Extensions = new string[] { "xml" }.ToList()
+            });
+            string? path = await saveFileDialog.ShowAsync(this);
+
+            if (path != null)
+            {
+                if (this.DataContext is ProgrammViewModel programmWindowViewModel)
+                {
+                    programmWindowViewModel.SaveCollection(path);
+                }
+            }
+        }
+
+        public async void LoadFile(object sender, RoutedEventArgs eventArgs)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filters.Add(new FileDialogFilter
+            {
+                Name = "xml files",
+                Extensions = new string[] { "xml" }.ToList()
+            });
+
+            string[]? path = await openFileDialog.ShowAsync(this);
+            if (path != null)
+            {
+                if (this.DataContext is ProgrammViewModel programmWindowViewModel)
+                {
+                    programmWindowViewModel.LoadCollection(path[0]);
+                }
+            }
+        }
 	}
 }

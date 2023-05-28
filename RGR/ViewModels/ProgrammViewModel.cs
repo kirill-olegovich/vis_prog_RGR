@@ -269,5 +269,19 @@ namespace RGR.ViewModels
             
             // System.Diagnostics.Debug.WriteLine("PowerCalculate END");
         }
+
+        public void SaveCollection(string path)
+        {
+            var xmlCollectionSaver = new XML_Saver();
+            xmlCollectionSaver.Save(Project.Circuits[0].Elements, path);
+        }
+
+        public void LoadCollection(string path)
+        {
+            var xmlCollectionLoader = new XML_Loader();
+            Project.Circuits[0].Elements = new ObservableCollection<Full_Elements>(xmlCollectionLoader.Load(path));
+            Class_Line templines = new Class_Line();
+            templines.CheckLines(Project.Circuits[0].Elements);
+        }
     }
 }
